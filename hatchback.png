@@ -1,0 +1,19 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hatch" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#138808;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#21BF73;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <g transform="translate(60, 90)">
+    <ellipse cx="130" cy="140" rx="110" ry="14" fill="rgba(0,0,0,0.12)"/>
+    <path d="M20 85 L50 45 L110 45 L135 60 L235 60 L255 80 L260 85 L260 115 L250 125 L10 125 L10 85 Z" fill="url(#hatch)" stroke="#0F6B06" stroke-width="2"/>
+    <path d="M60 50 L105 50 L95 70 L70 70 Z" fill="#E8F4FD" stroke="#1a1a1a" stroke-width="1"/>
+    <path d="M145 65 L225 65 L225 80 L150 80 Z" fill="#E8F4FD" stroke="#1a1a1a" stroke-width="1"/>
+    <circle cx="60" cy="125" r="20" fill="#1a1a1a"/>
+    <circle cx="60" cy="125" r="11" fill="#4a4a4a"/>
+    <circle cx="210" cy="125" r="20" fill="#1a1a1a"/>
+    <circle cx="210" cy="125" r="11" fill="#4a4a4a"/>
+    <circle cx="15" cy="105" r="4" fill="#21BF73"/>
+  </g>
+</svg>

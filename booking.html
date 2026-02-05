@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Ride - Bhartiyas Transport</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="images/logo.svg" alt="Bhartiyas Transport" class="logo">
+                <span class="brand-name">Bhartiyas Transport</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="booking.html" class="btn-primary-nav active">Book Now</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-header">
+                <h1>Book Your Ride</h1>
+                <p>Enter your journey details and we'll calculate the fare for you</p>
+            </div>
+
+            <div class="booking-container">
+                <div class="booking-form-wrapper">
+                    <form id="bookingForm" class="booking-form" novalidate>
+                        <div class="form-steps">
+                            <div class="step active">
+                                <span class="step-number">1</span>
+                                <span class="step-text">Journey Details</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <span class="step-text">Personal Info</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <span class="step-text">Confirmation</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 1: Journey Details -->
+                        <div class="form-step" id="step1">
+                            <h2>Journey Details</h2>
+                            
+                            <div class="form-group">
+                                <label for="pickupLocation">Pickup Location *</label>
+                                <div class="location-input">
+                                    <span class="location-icon">📍</span>
+                                    <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Enter pickup address" required autocomplete="off">
+                                </div>
+                                <div id="pickupSuggestions" class="location-suggestions"></div>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="location-swap">
+                                <button type="button" class="swap-btn" onclick="swapLocations()">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dropLocation">Drop Location *</label>
+                                <div class="location-input">
+                                    <span class="location-icon">🎯</span>
+                                    <input type="text" id="dropLocation" name="dropLocation" placeholder="Enter destination address" required autocomplete="off">
+                                </div>
+                                <div id="dropSuggestions" class="location-suggestions"></div>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="pickupDate">Pickup Date *</label>
+                                    <input type="date" id="pickupDate" name="pickupDate" required>
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pickupTime">Pickup Time *</label>
+                                    <input type="time" id="pickupTime" name="pickupTime" required>
+                                    <span class="error-message"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carType">Vehicle Type *</label>
+                                <div class="car-selection">
+                                    <label class="car-option">
+                                        <input type="radio" name="carType" value="sedan" required checked>
+                                        <div class="car-card">
+                                            <div class="car-icon">🚗</div>
+                                            <h4>Sedan</h4>
+                                            <p>4 Seats • AC</p>
+                                            <span class="car-price">₹25/km</span>
+                                        </div>
+                                    </label>
+                                    <label class="car-option">
+                                        <input type="radio" name="carType" value="suv" required>
+                                        <div class="car-card">
+                                            <div class="car-icon">🚙</div>
+                                            <h4>SUV</h4>
+                                            <p>7 Seats • AC</p>
+                                            <span class="car-price">₹25/km</span>
+                                        </div>
+                                    </label>
+                                    <label class="car-option">
+                                        <input type="radio" name="carType" value="hatchback" required>
+                                        <div class="car-card">
+                                            <div class="car-icon">🚕</div>
+                                            <h4>Hatchback</h4>
+                                            <p>4 Seats • AC</p>
+                                            <span class="car-price">₹25/km</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-full" onclick="calculateFare()">
+                                <span>Calculate Fare & Continue</span>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Step 2: Personal Information -->
+                        <div class="form-step hidden" id="step2">
+                            <h2>Personal Information</h2>
+                            
+                            <div class="fare-display">
+                                <div class="fare-info">
+                                    <div class="fare-row">
+                                        <span>Distance:</span>
+                                        <strong id="displayDistance">-</strong>
+                                    </div>
+                                    <div class="fare-row">
+                                        <span>Rate:</span>
+                                        <strong>₹25 per km</strong>
+                                    </div>
+                                    <div class="fare-divider"></div>
+                                    <div class="fare-row total">
+                                        <span>Total Fare:</span>
+                                        <strong id="displayFare">₹0</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="passengerName">Full Name *</label>
+                                    <input type="text" id="passengerName" name="passengerName" required>
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="passengerPhone">Phone Number *</label>
+                                    <div class="phone-input">
+                                        <span class="phone-prefix">+91</span>
+                                        <input type="tel" id="passengerPhone" name="passengerPhone" pattern="[0-9]{10}" required>
+                                    </div>
+                                    <span class="error-message"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="passengerEmail">Email Address *</label>
+                                <input type="email" id="passengerEmail" name="passengerEmail" required>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="specialRequests">Special Requests (Optional)</label>
+                                <textarea id="specialRequests" name="specialRequests" rows="3" placeholder="Any special requirements or instructions..."></textarea>
+                            </div>
+
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep()">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span>Back</span>
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                    <span>Continue</span>
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Confirmation -->
+                        <div class="form-step hidden" id="step3">
+                            <h2>Confirm Your Booking</h2>
+                            
+                            <div class="booking-summary">
+                                <h3>Journey Summary</h3>
+                                <div class="summary-item">
+                                    <span class="summary-label">From:</span>
+                                    <span class="summary-value" id="summaryPickup">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">To:</span>
+                                    <span class="summary-value" id="summaryDrop">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Date & Time:</span>
+                                    <span class="summary-value" id="summaryDateTime">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Vehicle:</span>
+                                    <span class="summary-value" id="summaryCarType">-</span>
+                                </div>
+                                <div class="summary-divider"></div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Distance:</span>
+                                    <span class="summary-value" id="summaryDistance">-</span>
+                                </div>
+                                <div class="summary-item total">
+                                    <span class="summary-label">Total Fare:</span>
+                                    <span class="summary-value" id="summaryFare">₹0</span>
+                                </div>
+                            </div>
+
+                            <div class="booking-summary">
+                                <h3>Passenger Details</h3>
+                                <div class="summary-item">
+                                    <span class="summary-label">Name:</span>
+                                    <span class="summary-value" id="summaryName">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Phone:</span>
+                                    <span class="summary-value" id="summaryPhone">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Email:</span>
+                                    <span class="summary-value" id="summaryEmail">-</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="confirmTerms" name="confirmTerms" required>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">I confirm that all details are correct and agree to the <a href="#">Terms & Conditions</a></span>
+                                </label>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep()">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span>Back</span>
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <span>Confirm Booking</span>
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M5 10L8.5 13.5L15 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Map Display -->
+                <div class="map-wrapper">
+                    <div id="map" class="booking-map"></div>
+                    <div class="map-info">
+                        <div class="info-card">
+                            <div class="info-icon">📏</div>
+                            <div class="info-content">
+                                <span class="info-label">Distance</span>
+                                <span class="info-value" id="mapDistance">Enter locations</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">💰</div>
+                            <div class="info-content">
+                                <span class="info-label">Estimated Fare</span>
+                                <span class="info-value" id="mapFare">₹0</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">⏱️</div>
+                            <div class="info-content">
+                                <span class="info-label">Duration</span>
+                                <span class="info-value" id="mapDuration">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success">
+            <div class="modal-icon">✅</div>
+            <h2>Booking Confirmed!</h2>
+            <p>Your ride has been successfully booked.</p>
+            <div class="booking-id">Booking ID: <strong id="bookingId">-</strong></div>
+            <p class="modal-note">You will receive a confirmation SMS and email shortly.</p>
+            <div class="modal-buttons">
+                <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                <button class="btn btn-primary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/booking.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap"></script>
+</body>
+</html>

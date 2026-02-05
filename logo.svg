@@ -1,0 +1,33 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Indian Flag Colors Background Circle -->
+  <circle cx="50" cy="50" r="48" fill="url(#flagGradient)"/>
+  
+  <!-- Car Icon -->
+  <g transform="translate(25, 35)">
+    <!-- Car Body -->
+    <path d="M5 15 L8 8 L42 8 L45 15 L48 15 L48 28 L2 28 L2 15 Z" fill="white" stroke="#FF6B35" stroke-width="2"/>
+    <!-- Windows -->
+    <rect x="10" y="10" width="12" height="6" fill="#E8F4FD" stroke="#FF6B35" stroke-width="1"/>
+    <rect x="28" y="10" width="12" height="6" fill="#E8F4FD" stroke="#FF6B35" stroke-width="1"/>
+    <!-- Wheels -->
+    <circle cx="12" cy="28" r="5" fill="#1a1a1a" stroke="#FF6B35" stroke-width="2"/>
+    <circle cx="38" cy="28" r="5" fill="#1a1a1a" stroke="#FF6B35" stroke-width="2"/>
+    <circle cx="12" cy="28" r="2" fill="#CCCCCC"/>
+    <circle cx="38" cy="28" r="2" fill="#CCCCCC"/>
+    <!-- Headlight -->
+    <circle cx="3" cy="20" r="1.5" fill="#F7931E"/>
+  </g>
+  
+  <!-- Ashoka Chakra inspired element -->
+  <circle cx="50" cy="50" r="15" fill="none" stroke="white" stroke-width="1" opacity="0.3"/>
+  <circle cx="50" cy="50" r="2" fill="white" opacity="0.5"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="flagGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9933;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#138808;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
